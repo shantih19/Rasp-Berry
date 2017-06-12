@@ -33,6 +33,11 @@ def parseText(message, status, name, id, db):
     if 'come ti chiami' in message:
         return 'Berry. Rasp-Berry. Il mio creatore è originale quanto ' + random.choice(['una calza ', 'una marmotta ', 'una marmitta ', 'una barca a vela ']) + random.choice(['ubriaca.', 'morta.', 'in fiamme.' , 'a rotelle'])
     if re.search('scu+sa+', message) is not None or re.search('pe+rdo+na+mi+', message) is not None:
-        cr.execute("UPDATE users SET status = 'neutral' WHERE id = ?;" , [id])
-        db.commit()
-        return random.choice(['Okay uwu', 'Sei perdonato per stavolta', 'Si figuri milord'])
+        if status == 'angry':
+            cr.execute("UPDATE users SET status = 'neutral' WHERE id = ?;" , [id])
+            db.commit()
+            return random.choice(['Okay uwu', 'Sei perdonato per stavolta', 'Si figuri milord'])
+        elif status == 'neutral':
+            return random.choice(['E di cosa?', 'Wat D:', 'Okaaaay ewe'])
+    if re.search('te+tte+', message) is not None or re.search('oppa+i+', message) is not None:
+        return random.choice([emoji.emojize('OPPAI :smirking_face::smirking_face:'), emoji.emojize("TETTE :smirking_face::smirking_face::smirking_face:"), "( . Y . )"])
