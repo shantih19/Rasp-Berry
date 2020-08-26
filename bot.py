@@ -9,7 +9,7 @@ import alert
 from telepot.loop import MessageLoop
 import parser
 db = sqlite3.connect('bot.db', check_same_thread = False)
-bot=telepot.Bot('382254887:AAFmOZhlQrfXDHJixWIsUZSoAIv3Qkh6yRo')
+bot=telepot.Bot('')
 cr = db.cursor()
 alert.sendAll("I'm back uwu", bot, cr)
 def handle(msg):
